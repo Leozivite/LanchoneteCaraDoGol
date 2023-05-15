@@ -30,29 +30,21 @@ public class calculos {
 
 		if (lanch.equals("H") || lanch.equals("HAMBURGUER")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata));
-		}
-
-		else if (lanch.equals("HB") || lanch.equals("HAMBURBACON")) {
+		}else if (lanch.equals("HB") || lanch.equals("HAMBURBACON")) {
 			System.out.printf("%.2f ", (pao + carne + alface + tomate + batata + bacon));
-		} else if (lanch.equals("E") || lanch.equals("HAMBURBACON")) {
+		} else if (lanch.equals("E") || lanch.equals("EGGSBURGUER")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + ovo));
-		}
-
-		else if (lanch.equals("X") || lanch.equals("XBURGUER")) {
+		}else if (lanch.equals("X") || lanch.equals("XBURGUER")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + queijo));
-		}
-
-		else if (lanch.equals("EX") || lanch.equals("EGGSXBURGUER")) {
+		}else if (lanch.equals("EX") || lanch.equals("EGGSXBURGUER")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + ovo + queijo));
-		}
-
-		else if (lanch.equals("EB") || lanch.equals("EGGSBACON")) {
+		}else if (lanch.equals("EB") || lanch.equals("EGGSBACON")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + ovo + bacon));
 		} else if (lanch.equals("XS") || lanch.equals("XSALADA")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + queijo + presunto));
 		} else if (lanch.equals("XSB") || lanch.equals("XSALADABACON")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + queijo + presunto + bacon));
-		} else if (lanch.equals("XB") || lanch == "XBACON") {
+		} else if (lanch.equals("XB") || lanch.equals("XBACON")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + queijo + bacon));
 		} else if (lanch.equals("EXS") || lanch.equals("EGGSXSALADA")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + ovo + queijo + presunto));
@@ -76,9 +68,8 @@ public class calculos {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + ovo + presunto));
 		} else if (lanch.equals("EPB") || lanch.equals("EGGSPRESSBACON")) {
 			System.out.printf("%.2f", (pao + carne + alface + tomate + batata + ovo + bacon + presunto));
-		} else {
-			System.out.printf("NAO TEMOS ESSE LANCHE NO CARDAPLIO");
-
+		} else {System.out.printf("NAO TEMOS ESSE LANCHE NO CARDAPLIO");
+		
 		}
 	}
 }
