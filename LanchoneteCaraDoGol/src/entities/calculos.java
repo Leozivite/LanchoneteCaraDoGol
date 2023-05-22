@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Date;
+
 public class calculos {
 	public double pao;
 	public double carne;
@@ -10,7 +12,8 @@ public class calculos {
 	public double ovo;
 	public double presunto;
 	public double bacon;
-
+    private Date now;
+    private Enums status;
 	public calculos(double kpao, double kcarne, double kalface, double ktomate, double kbatata, double kqueijo,
 			double Covo, double kpresunto, double kbacon) {
 
@@ -23,8 +26,21 @@ public class calculos {
 		ovo = Covo / 360;
 		presunto = kpresunto / 34;
 		bacon = kbacon / 10;
-
+        
 	}
+	
+	
+
+	public calculos(Date now, Enums status) {
+		this.now = now;
+		this.status = status;
+	} 
+	
+	public void setStatus(Enums status) {
+		this.status = status;
+	}
+
+
 
 	public void qualLanch(String lanch) {
 
@@ -72,4 +88,12 @@ public class calculos {
 		
 		}
 	}
+
+
+
+	@Override
+	public String toString() {
+		return  String.format("    Status do pedido%n   hora = ") + now + String.format("%n   status = ") + status;
+	}
+	
 }
