@@ -1,125 +1,35 @@
 package Program;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Enums;
 import entities.Pedido;
 import entities.calculos;
 
-public class Main {
+public class Main  {
 
 	public static void main(String[] args) throws InterruptedException {
+		String La="N";
+		int x=0;
 		Locale.setDefault(Locale.US);
-		Scanner sc = new Scanner(System.in);
-		DateTimeFormatter ldtf1 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH/mm/ss");
-		LocalDateTime D04 = LocalDateTime.now();
-		calculos order = new calculos(new Date(), Enums.PAGAMENTO_PENDENTE);
-		double troco = 0;
-		int w = 0;
-		int preco = 0;
-		int soma = 0;
-		String g = "";
-		String L = "S";
-		String La = "";
-		List<Pedido> list = new ArrayList<Pedido>();
+		Scanner sc=new Scanner(System.in);	
+		Pedido ped=new Pedido();
 		System.out.println("voce deseja pedir um lanche?");
 		String pedido = sc.nextLine().toUpperCase();
-		if (pedido.equals("S") || pedido.equals("SIM")) {
-
-			while (L.equals("S") || L.equals("SIM")) {
-				if (L.equals("status")) {
-					System.out.println(order);
-				}
-				D04 = LocalDateTime.now();
-				System.out.println("qual lanche voce deseja pedir? ");
-				g = sc.nextLine().toUpperCase();
-				if (g.equals("H") || g.equals("HAMBURGUER")) {
-					preco = 8;
-				} else if (g.equals("HB") || g.equals("HAMBURBACON")) {
-					preco = 11;
-				} else if (g.equals("E") || g.equals("EGGSBURGUER")) {
-					preco = 10;
-				} else if (g.equals("X") || g.equals("XBURGUER")) {
-					preco = 11;
-				} else if (g.equals("EX") || g.equals("EGGSXBURGUER")) {
-					preco = 12;
-				} else if (g.equals("EB") || g.equals("EGGSBACON")) {
-					preco = 13;
-				} else if (g.equals("XS") || g.equals("XSALADA")) {
-					preco = 12;
-				} else if (g.equals("XSB") || g.equals("XSALADABACON")) {
-					preco = 14;
-				} else if (g.equals("XB") || g.equals("XBACON")) {
-					preco = 13;
-				} else if (g.equals("EXS") || g.equals("EGGSXSALADA")) {
-					preco = 13;
-				} else if (g.equals("EXB") || g.equals("EGGSXBACON")) {
-					preco = 14;
-				} else if (g.equals("XT") || g.equals("XTUDO")) {
-					preco = 16;
-				} else if (g.equals("A") || g.equals("AMERICANO")) {
-					preco = 16;
-				} else if (g.equals("MF") || g.equals("MATAFOME")) {
-					preco = 18;
-				} else if (g.equals("DXT") || g.equals("DUPLOXTUDO")) {
-					preco = 20;
-				} else if (g.equals("MQ") || g.equals("MISTO QUENTE")) {
-					preco = 11;
-				} else if (g.equals("PRES") || g.equals("PRENSADO")) {
-					preco = 13;
-				} else if (g.equals("P") || g.equals("PRESSBURGUER")) {
-					preco = 10;
-				} else if (g.equals("EP") || g.equals("EGGSPRESSBURGUER")) {
-					preco = 12;
-				} else if (g.equals("EPB") || g.equals("EGGSPRESSBACON")) {
-					preco = 14;
-				} else {
-					System.out.println("NAO TEMOS ESSE LANCHE NO CARDAPLIO");
-					preco = 0;
-				}
-
-				list.add(new Pedido(g, preco));
-
-				System.out.println("Deseja pedir outro lanche? ");
-				L = sc.nextLine().toUpperCase();
-
-			}
-			for (Pedido n : list) {
-				soma += n.intValue();
-			}
-			System.out.println(list.toString());
-			System.out.println("valor total a pagar = " + soma);
-			System.out.println("Hora do pedido " + D04.format(ldtf1));
-			System.out.print("troco para ? ");
-			troco = sc.nextDouble();
-			while (w != 0) {
-				if (soma < troco) {
-					System.out.println("pagamento confirmado");
-					w = 1;
-					order.setStatus(Enums.HA_CAMINHO);
-				}
-				else  {
-					System.out.printf("troco invalido %ntente novamente");
-					w = 0;
-				}
-				
-			}
-			System.out.printf("pedido feito aquarde%ndeseja ver o status?%n");
-			L = sc.nextLine().toUpperCase();
-			if(L.equals("S")||L.equals("SIM")) {
-				System.out.println(order);
-			}
-			Thread.sleep(100000); 
-			order=new calculos( new Date(),Enums.PEDIDO_ENTREGUE);
-			System.out.println(order);
+		while (x==0) {if (pedido.equals("S") || pedido.equals("SIM")) {
+			ped.pedidof();
+			x=1;
 		}
-		
+		else if (pedido.equals("N") || pedido.equals("NAO")) {
+			x=1;
+		}
+		else {
+			System.out.println("SIM ou NAO?");
+			pedido = sc.nextLine().toUpperCase();
+		}
+		}
 		//CALCULE O VALOR DE UM LANCHE.
 		
 		System.out.printf("%nvoce deseja calcular o valor de um lanche? ");
