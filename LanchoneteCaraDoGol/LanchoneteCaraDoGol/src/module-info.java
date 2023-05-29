@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author brazf
- *
- */
-module LanchoneteCaraDoGol {
-}
