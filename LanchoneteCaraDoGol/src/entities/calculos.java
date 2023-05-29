@@ -1,10 +1,14 @@
 package entities;
 
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 
 
 public class calculos {
+	boolean x=false;
+
 	public double pao;
 	public double carne;
 	public double alface;
@@ -16,6 +20,9 @@ public class calculos {
 	public double bacon;
     private Date now;
     private Enums status;
+    public calculos() {
+    	
+    }
 	public calculos(double kpao, double kcarne, double kalface, double ktomate, double kbatata, double kqueijo,
 			double Covo, double kpresunto, double kbacon) {
 
@@ -40,6 +47,41 @@ public class calculos {
 	
 	public void setStatus(Enums status) {
 		this.status = status;
+	}
+	public void calclanch() {
+		while (x == false) {
+			try {
+				Scanner sc3 = new Scanner(System.in);
+				System.out.print("qual o preço de  quilo de pao ");
+				double kpao = sc3.nextDouble();
+				System.out.print("qual o preço da peça do quilo da carne? ");
+				double kcarne = sc3.nextDouble();
+				System.out.print("qual e o preço do mole do alface? ");
+				double kalface = sc3.nextDouble();
+				System.out.print("qual e o preço d 20 quilo do tomate? ");
+				double ktomate = sc3.nextDouble();
+				System.out.print("qual e o preço do quilo da batata?  ");
+				double kbatata = sc3.nextDouble();
+				System.out.print("qual o preço do quilo do queijo? ");
+				double kqueijo = sc3.nextDouble();
+				System.out.print("qual o preço da caixa de ovo? ");
+				double Covo = sc3.nextDouble();
+				System.out.print("qual o preço do quilo do presunto? ");
+				double kpresunto = sc3.nextDouble();
+				System.out.print("qual o preço do quilo do bacon? ");
+				double kbacon = sc3.nextDouble();
+				System.out.println("qual lanche voce deseja saber o preco");
+				calculos cal = new calculos(kpao, kcarne, kalface, ktomate, kbatata, kqueijo, Covo, kpresunto,
+						kbacon);
+				sc3.nextLine();
+				String lanch = sc3.nextLine().toUpperCase();
+				cal.qualLanch(lanch);
+				x = true;
+			} catch (InputMismatchException e) {
+				System.out.println("valor invalido tente novamente");
+			}}
+		
+		
 	}
 
 
@@ -97,5 +139,6 @@ public class calculos {
 	public String toString() {
 		return  String.format("    Status do pedido%n   hora = ") + now + String.format("%n   status = ") + status;
 	}
+	
 	
 }

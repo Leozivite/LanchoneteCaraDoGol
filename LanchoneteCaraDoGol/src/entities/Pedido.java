@@ -38,8 +38,7 @@ public class Pedido {
 		LocalDateTime D04 = LocalDateTime.now();
 		calculos order = new calculos(new Date(), Enums.PAGAMENTO_PENDENTE);
 		double troco = 0;
-		int x = 1;
-		int w = 0;
+		boolean b = false;
 		int soma = 0;
 		String L = "S";
 		List<Pedido> list = new ArrayList<Pedido>();
@@ -113,30 +112,31 @@ public class Pedido {
 		System.out.println("Hora do pedido " + D04.format(ldtf1));
 		System.out.print("troco para ? ");
 
-		
+		while (b == false) {
 			try {
-				troco = sc.nextDouble();
-				while (w != 0) {
-					if (soma < troco) {
-						System.out.println("pagamento confirmado");
-						w = 1;
-						order.setStatus(Enums.HA_CAMINHO);
-					} else {
-						System.out.printf("troco invalido %ntente novamente");
-						w = 0;
-					}
-					
+				Scanner sc2 = new Scanner(System.in);
+				troco = sc2.nextDouble();
+
+				if (soma < troco) {
+					System.out.println("pagamento confirmado");
+					b = true;
+
+					order.setStatus(Enums.HA_CAMINHO);
+				} else {
+					System.out.printf("troco invalido %ntente novamente ");
+					b = false;
+
 				}
-				System.out.printf("pedido feito aquarde%n");
-
-				order = new calculos(new Date(), Enums.PEDIDO_ENTREGUE);
-				System.out.println(order);
-
 			} catch (InputMismatchException e) {
-				System.out.println("Troco invalido , pedido cancelado ");
-				
-			
+				System.out.println("Troco invalido , tente novamente ");
+				troco = 0;
+
+			}
 		}
+		System.out.printf("pedido feito aquarde%n");
+
+		order = new calculos(new Date(), Enums.PEDIDO_ENTREGUE);
+		System.out.println(order);
 
 	}
 
